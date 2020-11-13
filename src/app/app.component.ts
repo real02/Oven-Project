@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { Oven } from './data/Oven/oven';
 
 @Component({
-  selector: 'app-root',
+  selector: 'ngz-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'oven-project';
+  ovens: Array<Oven> = [];
+
+  selectedOven: Oven;
 }
