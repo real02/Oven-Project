@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Oven } from './data/Oven/oven';
 
+import { OvenService } from './services/api/ovens.service';
+
 @Component({
   selector: 'ngz-root',
   templateUrl: './app.component.html',
@@ -9,12 +11,18 @@ import { Oven } from './data/Oven/oven';
 })
 export class AppComponent implements OnInit {
   ovens: Array<Oven> = [];
-
   selectedOven: Oven;
 
-  ngOnInit(): void {
-    this.getOvenData();
-  }
+  public errorMessage: string;
 
-  async getOvenData(): Promise<void> {}
+  public constructor(private ovenService: OvenService) {}
+
+  ngOnInit(): void {
+    this.ovenService.getOvens().subscribe({
+      next: (ovens) => {
+        this.ovens = ovens;
+      },
+      error: (err) => (this.errorMessage = err),
+    });
+  }
 }

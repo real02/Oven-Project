@@ -3,7 +3,7 @@ export class Measurement {
     public measurementID: number,
     public ovenID: number,
     public dateTime: Date,
-    public powerAmount: number,
+    public powerConsumption: number,
     public temperature: number
   ) {}
 }

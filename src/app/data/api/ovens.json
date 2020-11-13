@@ -1,0 +1,110 @@
+[
+  {
+    "ovenID": 0,
+    "address": "Gaje Alage 8",
+    "measurements": [
+      {
+        "measurementID": 0,
+        "ovenID": 0,
+        "dateTime": "Tue Feb 05 2021 12:05:22 GMT+0530 (IST)",
+        "powerConsumption": 33,
+        "temperature": 23
+      },
+      {
+        "measurementID": 1,
+        "ovenID": 0,
+        "dateTime": "Tue Feb 05 2021 12:07:22 GMT+0530 (IST)",
+        "powerConsumption": 34,
+        "temperature": 24
+      },
+      {
+        "measurementID": 2,
+        "ovenID": 0,
+        "dateTime": "Tue Feb 05 2021 12:09:22 GMT+0530 (IST)",
+        "powerConsumption": 34,
+        "temperature": 25
+      }
+    ]
+  },
+  {
+    "ovenID": 1,
+    "address": "Andrije Hebranga 81",
+    "measurements": [
+      {
+        "measurementID": 0,
+        "ovenID": 0,
+        "dateTime": "Tue Feb 05 2021 12:05:22 GMT+0530 (IST)",
+        "powerConsumption": 33,
+        "temperature": 23
+      },
+      {
+        "measurementID": 1,
+        "ovenID": 0,
+        "dateTime": "Tue Feb 05 2021 12:07:22 GMT+0530 (IST)",
+        "powerConsumption": 34,
+        "temperature": 24
+      },
+      {
+        "measurementID": 2,
+        "ovenID": 0,
+        "dateTime": "Tue Feb 05 2021 12:09:22 GMT+0530 (IST)",
+        "powerConsumption": 34,
+        "temperature": 25
+      }
+    ]
+  },
+  {
+    "ovenID": 2,
+    "address": "Petrova 6",
+    "measurements": [
+      {
+        "measurementID": 0,
+        "ovenID": 0,
+        "dateTime": "Tue Feb 05 2021 12:05:22 GMT+0530 (IST)",
+        "powerConsumption": 33,
+        "temperature": 23
+      },
+      {
+        "measurementID": 1,
+        "ovenID": 0,
+        "dateTime": "Tue Feb 05 2021 12:07:22 GMT+0530 (IST)",
+        "powerConsumption": 34,
+        "temperature": 24
+      },
+      {
+        "measurementID": 2,
+        "ovenID": 0,
+        "dateTime": "Tue Feb 05 2021 12:09:22 GMT+0530 (IST)",
+        "powerConsumption": 34,
+        "temperature": 25
+      }
+    ]
+  },
+  {
+    "ovenID": 3,
+    "address": "Vukovarska 15A",
+    "measurements": [
+      {
+        "measurementID": 0,
+        "ovenID": 0,
+        "dateTime": "Tue Feb 05 2021 12:05:22 GMT+0530 (IST)",
+        "powerConsumption": 33,
+        "temperature": 23
+      },
+      {
+        "measurementID": 1,
+        "ovenID": 0,
+        "dateTime": "Tue Feb 05 2021 12:07:22 GMT+0530 (IST)",
+        "powerConsumption": 34,
+        "temperature": 24
+      },
+      {
+        "measurementID": 2,
+        "ovenID": 0,
+        "dateTime": "Tue Feb 05 2021 12:09:22 GMT+0530 (IST)",
+        "powerConsumption": 34,
+        "temperature": 25
+      }
+    ]
+  }
+]
