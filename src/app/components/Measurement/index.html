@@ -1,0 +1,12 @@
+<table class="table table-dark">
+  <tr class="header">
+    <th scope="col">Time</th>
+    <th scope="col">Power amount</th>
+    <th scope="col">Temperature</th>
+  </tr>
+  <tr *ngFor="let measurement of measurements">
+    <td>{{measurement.dateTime}}</td>
+    <td>{{measurement.powerAmount}}</td>
+    <td>{{measurement.temperature}}</td>
+  </tr>
+</table>

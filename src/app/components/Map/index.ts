@@ -5,7 +5,7 @@ import { Oven } from 'src/app/data/Oven/oven';
 
 @Component({
   selector: 'ngz-map',
-  template: './index.html',
+  templateUrl: './index.html',
   styleUrls: ['./index.scss'],
 })
 export class MapComponent {

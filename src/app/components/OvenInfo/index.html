@@ -1,0 +1,12 @@
+<div class="form-group">
+  <label for="ovens">Select an oven:</label>
+  <select
+    class="form-control"
+    id="ovens"
+    value="Oven ID: "
+    *ngFor="let oven of ovens"
+  >
+    <option>{{oven.ovenID}}</option>
+  </select>
+  <div>Address: {{selectedOven.address}}</div>
+</div>

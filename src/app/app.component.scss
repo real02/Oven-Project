@@ -1,0 +1,23 @@
+.app {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.leftColumnSection {
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  width: 35%;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.rightColumnSection {
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  width: 35%;
+  right: 0;
+  top: 0;
+}

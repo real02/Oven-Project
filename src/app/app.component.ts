@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Oven } from './data/Oven/oven';
 
@@ -7,8 +7,14 @@ import { Oven } from './data/Oven/oven';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   ovens: Array<Oven> = [];
 
   selectedOven: Oven;
+
+  ngOnInit(): void {
+    this.getOvenData();
+  }
+
+  async getOvenData(): Promise<void> {}
 }
