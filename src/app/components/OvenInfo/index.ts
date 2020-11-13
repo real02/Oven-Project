@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { Oven } from 'src/app/data/Oven/oven';
 
 @Component({
