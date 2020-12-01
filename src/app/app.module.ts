@@ -7,6 +7,8 @@ import { MapComponent } from './components/Map';
 import { MeasurementsComponent } from './components/Measurement';
 import { OvenInfoComponent } from './components/OvenInfo';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +17,7 @@ import { OvenInfoComponent } from './components/OvenInfo';
     MeasurementsComponent,
     OvenInfoComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

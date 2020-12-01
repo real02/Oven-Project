@@ -4,6 +4,9 @@ import { Oven } from './data/Oven/oven';
 
 import { OvenService } from './services/api/ovens.service';
 
+import { HttpClient } from '@angular/common/http';
+import { IOven } from './data/Oven/IOven';
+
 @Component({
   selector: 'ngz-root',
   templateUrl: './app.component.html',
@@ -15,7 +18,10 @@ export class AppComponent implements OnInit {
 
   public errorMessage: string;
 
-  public constructor(private ovenService: OvenService) {}
+  public constructor(
+    private ovenService: OvenService,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     this.ovenService.getOvens().subscribe({
@@ -24,5 +30,9 @@ export class AppComponent implements OnInit {
       },
       error: (err) => (this.errorMessage = err),
     });
+
+    // this.http
+    //   .get('app/data/api/ovens.json')
+    //   .subscribe((res) => console.log(res));
   }
 }

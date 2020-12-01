@@ -13,4 +13,8 @@ export class OvenInfoComponent {
 
   @Input()
   ovens: Array<Oven>;
+
+  setSelectedOven(oven: Oven): void {
+    this.selectedOven = oven;
+  }
 }

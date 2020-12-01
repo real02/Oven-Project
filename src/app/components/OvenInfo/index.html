@@ -1,12 +1,15 @@
 <div class="form-group">
   <label for="ovens">Select an oven:</label>
-  <select
-    class="form-control"
-    id="ovens"
-    value="Oven ID: "
-    *ngFor="let oven of ovens"
-  >
-    <option>{{oven.ovenID}}</option>
-  </select>
+  <div *ngIf="ovens.length">
+    <select
+      class="form-control"
+      id="ovens"
+      value="Oven ID: ${{ovens[0].ovenID}}"
+      *ngFor="let oven of ovens"
+      (click)="setSelectedOven(oven)"
+    >
+      <option>Oven {{oven.ovenID}}</option>
+    </select>
+  </div>
   <div>Address: {{selectedOven.address}}</div>
 </div>
