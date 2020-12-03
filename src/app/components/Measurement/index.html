@@ -4,7 +4,10 @@
     <th scope="col">Power consumption</th>
     <th scope="col">Temperature</th>
   </tr>
-  <tr *ngFor="let measurement of measurements">
+  <tr
+    *ngFor="let measurement of selectedOven.measurements"
+    class="measurements-table"
+  >
     <td>{{measurement.dateTime}}</td>
     <td>{{measurement.powerConsumption}}</td>
     <td>{{measurement.temperature}}</td>

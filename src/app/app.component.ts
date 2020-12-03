@@ -3,9 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Oven } from './data/Oven/oven';
 
 import { OvenService } from './services/api/ovens.service';
-
-import { HttpClient } from '@angular/common/http';
-import { IOven } from './data/Oven/IOven';
+import { Location } from './data/Location/location';
 
 @Component({
   selector: 'ngz-root',
@@ -14,25 +12,23 @@ import { IOven } from './data/Oven/IOven';
 })
 export class AppComponent implements OnInit {
   ovens: Array<Oven> = [];
-  selectedOven: Oven;
+
+  selectedOven =
+    this.ovens.length > 0
+      ? this.ovens[0]
+      : new Oven('', '', [], new Location());
 
   public errorMessage: string;
 
-  public constructor(
-    private ovenService: OvenService,
-    private http: HttpClient
-  ) {}
+  public constructor(private ovenService: OvenService) {}
 
   ngOnInit(): void {
     this.ovenService.getOvens().subscribe({
       next: (ovens) => {
         this.ovens = ovens;
+        console.log(this.ovens);
       },
       error: (err) => (this.errorMessage = err),
     });
-
-    // this.http
-    //   .get('app/data/api/ovens.json')
-    //   .subscribe((res) => console.log(res));
   }
 }
