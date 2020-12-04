@@ -9,8 +9,6 @@ import { Oven } from 'src/app/data/Oven/oven';
   styleUrls: ['./index.scss'],
 })
 export class MeasurementsComponent {
-  measurements: Array<Measurement> = [];
-
   @Input()
-  selectedOven: Oven;
+  public selectedOven: Oven;
 }

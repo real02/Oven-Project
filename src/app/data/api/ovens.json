@@ -81,63 +81,63 @@
         "ovenID": 0,
         "dateTime": "Tue Feb 05 2021 00:00:00 GMT+0530 (IST)",
         "powerConsumption": 2.31,
-        "temperature": 28
+        "temperature": 32
       },
       {
         "measurementID": 1,
         "ovenID": 0,
         "dateTime": "Tue Feb 05 2021 03:00:00 GMT+0530 (IST)",
         "powerConsumption": 2.07,
-        "temperature": 17
+        "temperature": 24
       },
       {
         "measurementID": 2,
         "ovenID": 0,
         "dateTime": "Tue Feb 05 2021 06:00:00 GMT+0530 (IST)",
         "powerConsumption": 1.28,
-        "temperature": 32
+        "temperature": 28
       },
       {
         "measurementID": 3,
         "ovenID": 0,
         "dateTime": "Mon Jan 06 2021 09:00:00 GMT+0530 (IST)",
         "powerConsumption": 1.91,
-        "temperature": 30
+        "temperature": 21
       },
       {
         "measurementID": 4,
         "ovenID": 0,
         "dateTime": "Mon Jan 06 2021 12:00:00 GMT+0530 (IST)",
         "powerConsumption": 1.24,
-        "temperature": 21
+        "temperature": 31
       },
       {
         "measurementID": 5,
         "ovenID": 0,
         "dateTime": "Mon Jan 06 2021 15:00:00 GMT+0530 (IST)",
         "powerConsumption": 2.9,
-        "temperature": 25
+        "temperature": 21
       },
       {
         "measurementID": 6,
         "ovenID": 0,
         "dateTime": "Mon Jan 06 2021 18:00:00 GMT+0530 (IST)",
         "powerConsumption": 0.62,
-        "temperature": 17
+        "temperature": 19
       },
       {
         "measurementID": 7,
         "ovenID": 0,
         "dateTime": "Mon Jan 06 2021 21:00:00 GMT+0530 (IST)",
         "powerConsumption": 0.96,
-        "temperature": 31
+        "temperature": 17
       },
       {
         "measurementID": 8,
         "ovenID": 0,
         "dateTime": "Mon Jan 06 2021 00:00:00 GMT+0530 (IST)",
         "powerConsumption": 3.42,
-        "temperature": 15
+        "temperature": 28
       }
     ],
     "location": {

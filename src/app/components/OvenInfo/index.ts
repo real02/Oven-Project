@@ -9,18 +9,18 @@ import { Oven } from 'src/app/data/Oven/oven';
 })
 export class OvenInfoComponent {
   @Input()
-  selectedOven: Oven;
+  public selectedOven: Oven;
   @Output()
-  selectedOvenChange = new EventEmitter<Oven>();
+  private selectedOvenChange = new EventEmitter<Oven>();
 
   @Input()
-  ovens: Array<Oven>;
+  public ovens: Array<Oven>;
 
-  handleChange(): void {
+  private handleChange(): void {
     this.selectedOvenChange.emit(this.selectedOven);
   }
 
-  setSelectedOven(ovenID: number): void {
+  public setSelectedOven(ovenID: number): void {
     this.selectedOven = this.ovens[ovenID];
     this.handleChange();
     console.log(this.selectedOven);

@@ -5,13 +5,11 @@ import {
   AfterViewInit,
   ElementRef,
   OnChanges,
-  OnInit,
 } from '@angular/core';
 
 import { Oven } from 'src/app/data/Oven/oven';
 
 import {} from 'googlemaps';
-import { SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'ngz-map',
@@ -20,21 +18,24 @@ import { SimpleChanges } from '@angular/core';
 })
 export class MapComponent implements AfterViewInit, OnChanges {
   @Input()
-  selectedOven: Oven;
+  private selectedOven: Oven;
 
   @ViewChild('map', { static: false })
-  mapElement: ElementRef;
+  private mapElement: ElementRef;
 
-  map: google.maps.Map;
+  private map: google.maps.Map;
 
-  coordinates = new google.maps.LatLng(45.802385867604286, 15.976800678562704);
+  private coordinates = new google.maps.LatLng(
+    45.802385867604286,
+    15.976800678562704
+  );
 
-  mapOptions: google.maps.MapOptions = {
+  private mapOptions: google.maps.MapOptions = {
     center: this.coordinates,
     zoom: 13,
   };
 
-  marker: google.maps.Marker;
+  private marker: google.maps.Marker;
 
   ngAfterViewInit(): void {
     this.marker = new google.maps.Marker({
@@ -44,7 +45,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
     this.mapInitializer();
   }
 
-  mapInitializer(): void {
+  private mapInitializer(): void {
     if (this.mapElement !== undefined) {
       this.map = new google.maps.Map(
         this.mapElement.nativeElement,
@@ -54,35 +55,16 @@ export class MapComponent implements AfterViewInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     // tslint:disable-next-line: forin
-    for (const propName in changes) {
-      const chng = changes[propName];
-      const cur = JSON.stringify(chng.currentValue);
-      const prev = JSON.stringify(chng.previousValue);
-
-      this.coordinates = new google.maps.LatLng(
-        this.selectedOven.location.latitude,
-        this.selectedOven.location.longitude
-      );
-      // console.log(
-      //   this.selectedOven.location.latitude +
-      //     ' ' +
-      //     this.selectedOven.location.longitude
-      // );
-      this.marker = new google.maps.Marker({
-        position: this.coordinates,
-        map: this.map,
-      });
-      this.mapInitializer();
-      // console.log(
-      //   this.selectedOven.location.latitude +
-      //     ' ' +
-      //     this.selectedOven.location.longitude
-      // );
-      // console.log(
-      //   `${propName}: currentValue = ${cur}, previousValue = ${prev}`
-      // );
-    }
+    this.coordinates = new google.maps.LatLng(
+      this.selectedOven.location.latitude,
+      this.selectedOven.location.longitude
+    );
+    this.marker = new google.maps.Marker({
+      position: this.coordinates,
+      map: this.map,
+    });
+    this.mapInitializer();
   }
 }

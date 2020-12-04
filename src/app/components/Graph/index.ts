@@ -11,9 +11,9 @@ import { Chart } from 'node_modules/chart.js';
 })
 export class GraphComponent implements OnChanges {
   @Input()
-  selectedOven: Oven;
+  private selectedOven: Oven;
 
-  ngOnChanges(): void {
+  public ngOnChanges(): void {
     const myChart = new Chart('chart', {
       type: 'line',
       data: {
@@ -53,12 +53,14 @@ export class GraphComponent implements OnChanges {
               ticks: {
                 beginAtZero: true,
               },
+              position: 'left',
             },
             {
               id: 'power_consumption',
               ticks: {
                 beginAtZero: true,
               },
+              position: 'left',
             },
           ],
         },
