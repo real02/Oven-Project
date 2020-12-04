@@ -5,10 +5,13 @@
     id="ovens"
     (change)="setSelectedOven($event.target.value)"
   >
-    <option></option>
     <option *ngFor="let oven of ovens" value="{{oven.ovenID}}">
       Oven (ID: {{oven.ovenID}})
     </option>
   </select>
   <div>Address: {{selectedOven.address}}</div>
 </div>
+<ngz-measurements
+  [ovenSelected]="ovenSelected"
+  [selectedOven]="selectedOven"
+></ngz-measurements>

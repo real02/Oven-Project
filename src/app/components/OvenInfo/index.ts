@@ -16,13 +16,12 @@ export class OvenInfoComponent {
   @Input()
   public ovens: Array<Oven>;
 
-  private handleChange(): void {
-    this.selectedOvenChange.emit(this.selectedOven);
-  }
+  public ovenSelected = false;
 
   public setSelectedOven(ovenID: number): void {
     this.selectedOven = this.ovens[ovenID];
-    this.handleChange();
+    this.ovenSelected = true;
+    this.selectedOvenChange.emit(this.selectedOven);
     console.log(this.selectedOven);
   }
 }

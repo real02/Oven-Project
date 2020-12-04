@@ -4,6 +4,7 @@ export class Measurement {
     public ovenID: number,
     public dateTime: Date,
     public powerConsumption: number,
-    public temperature: number
+    public temperature: number,
+    public temperatureInFahrenheit: number
   ) {}
 }

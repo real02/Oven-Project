@@ -13,10 +13,7 @@ import { Location } from './data/Location/location';
 export class AppComponent implements OnInit {
   ovens: Array<Oven> = [];
 
-  selectedOven =
-    this.ovens.length > 0
-      ? this.ovens[0]
-      : new Oven('', '', [], new Location());
+  selectedOven: Oven;
 
   public errorMessage: string;
 
@@ -26,6 +23,10 @@ export class AppComponent implements OnInit {
     this.ovenService.getOvens().subscribe({
       next: (ovens) => {
         this.ovens = ovens;
+        this.selectedOven =
+          this.ovens.length > 0
+            ? this.ovens[0]
+            : new Oven('', '', [], new Location());
         console.log(this.ovens);
       },
       error: (err) => (this.errorMessage = err),

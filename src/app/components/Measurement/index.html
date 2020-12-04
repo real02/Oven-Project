@@ -2,7 +2,8 @@
   <tr class="header">
     <th scope="col">Time</th>
     <th scope="col">Power consumption</th>
-    <th scope="col">Temperature</th>
+    <th scope="col">Temperature (°C)</th>
+    <th *ngIf="ovenSelected">Temperature (°F)</th>
   </tr>
   <tr
     *ngFor="let measurement of selectedOven.measurements"
@@ -11,5 +12,8 @@
     <td>{{measurement.dateTime}}</td>
     <td>{{measurement.powerConsumption}}</td>
     <td>{{measurement.temperature}}</td>
+    <td *ngIf="ovenSelected">
+      {{convertCelsiusToFahrenheit(measurement.temperature)}}
+    </td>
   </tr>
 </table>
