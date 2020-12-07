@@ -5,6 +5,6 @@ export class Measurement {
     public dateTime: Date,
     public powerConsumption: number,
     public temperature: number,
-    public temperatureInFahrenheit: number
+    public temperatureInFahrenheit = 0
   ) {}
 }

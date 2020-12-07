@@ -9,9 +9,11 @@
       Oven (ID: {{oven.ovenID}})
     </option>
   </select>
-  <div>Address: {{selectedOven.address}}</div>
+  <ng-container *ngIf="selectedOven">
+    <div>Address: {{selectedOven.address}}</div>
+  </ng-container>
 </div>
 <ngz-measurements
   [ovenSelected]="ovenSelected"
-  [selectedOven]="selectedOven"
+  [(selectedOven)]="selectedOven"
 ></ngz-measurements>

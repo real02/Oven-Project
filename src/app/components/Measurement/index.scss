@@ -1,13 +1,9 @@
-tr th {
+tr td {
   text-align: center;
 }
 
 .table-dark {
   margin-top: 60px;
-}
-
-.measurements-table td {
-  text-align: center;
 }
 
 .table.table-dark {
@@ -16,4 +12,5 @@ tr th {
 
 .header th {
   border-top: none;
+  text-align: center;
 }

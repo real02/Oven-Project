@@ -3,17 +3,14 @@
     <th scope="col">Time</th>
     <th scope="col">Power consumption</th>
     <th scope="col">Temperature (°C)</th>
-    <th *ngIf="ovenSelected">Temperature (°F)</th>
+    <th *ngIf="selectedOven">Temperature (°F)</th>
   </tr>
-  <tr
-    *ngFor="let measurement of selectedOven.measurements"
-    class="measurements-table"
-  >
-    <td>{{measurement.dateTime}}</td>
-    <td>{{measurement.powerConsumption}}</td>
-    <td>{{measurement.temperature}}</td>
-    <td *ngIf="ovenSelected">
-      {{convertCelsiusToFahrenheit(measurement.temperature)}}
-    </td>
-  </tr>
+  <ng-container *ngIf="selectedOven">
+    <tr *ngFor="let measurement of selectedOven.measurements; let id = index">
+      <td>{{measurement.dateTime}}</td>
+      <td>{{measurement.powerConsumption}}</td>
+      <td>{{measurement.temperature}}</td>
+      <td *ngIf="ovenSelected">{{insertFahrenheitValue(measurement, id)}}</td>
+    </tr>
+  </ng-container>
 </table>
