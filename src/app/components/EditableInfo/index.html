@@ -1,0 +1,51 @@
+<div>
+  <ng-container *ngIf="showInput">
+    <button (click)="toggleShowInput()" disabled>Edit</button>
+  </ng-container>
+  <ng-container *ngIf="!showInput">
+    <button (click)="toggleShowInput()">Edit</button>
+  </ng-container>
+  <ng-container *ngIf="showInput">
+    <div>
+      <label for="address">Address: </label>
+      <input
+        type="text"
+        id="address"
+        #address
+        (blur)="addValue(address.value, 'address')"
+      /><br />
+    </div>
+    <div>
+      <label for="locationLatitude">Location latitude: </label>
+      <input
+        type="text"
+        id="latitude"
+        #locationLatitude
+        (blur)="addValue(locationLatitude.value, 'locationLatitude')"
+      /><br />
+    </div>
+    <div>
+      <label for="locationLongitude">Location longitude: </label>
+      <input
+        type="text"
+        id="longitude"
+        #locationLongitude
+        (blur)="addValue(locationLongitude.value, 'locationLongitude')"
+      /><br />
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!showInput">
+    <div>Address: {{selectedOven.address}}</div>
+    <div>Location latitude: {{selectedOven.locationLatitude}}</div>
+    <div>Location longitude: {{selectedOven.locationLongitude}}</div>
+  </ng-container>
+  <div>
+    <ng-container *ngIf="!showInput">
+      <button class="btnSave" (click)="updateOvenData()" disabled>Save</button>
+    </ng-container>
+    <ng-container *ngIf="showInput">
+      <button class="btnSave" (click)="updateOvenData()">Save</button>
+    </ng-container>
+    <button (click)="cancelChanges()">Cancel</button>
+  </div>
+</div>

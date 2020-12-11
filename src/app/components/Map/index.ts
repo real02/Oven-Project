@@ -56,11 +56,10 @@ export class MapComponent implements AfterViewInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    // tslint:disable-next-line: forin
     if (this.selectedOven !== undefined) {
       this.coordinates = new google.maps.LatLng(
-        this.selectedOven.location.latitude,
-        this.selectedOven.location.longitude
+        this.selectedOven.locationLatitude,
+        this.selectedOven.locationLongitude
       );
       this.marker = new google.maps.Marker({
         position: this.coordinates,

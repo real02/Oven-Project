@@ -11,7 +11,7 @@ import { Oven } from 'src/app/data/Oven/oven';
   providedIn: 'root',
 })
 export class OvenService {
-  private ovensUrl = 'app/data/api/ovens.json';
+  private ovensUrl = 'http://localhost:51044/api/ovens';
 
   constructor(private http: HttpClient) {}
 

@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+} from '@angular/core';
 
 import { Oven } from 'src/app/data/Oven/oven';
 
@@ -19,7 +25,8 @@ export class OvenInfoComponent {
   public ovenSelected = false;
 
   public setSelectedOven(ovenID: number): void {
-    this.selectedOven = this.ovens[ovenID];
+    console.log(ovenID);
+    this.selectedOven = this.ovens[ovenID - 1];
     this.ovenSelected = true;
     this.selectedOvenChange.emit(this.selectedOven);
     console.log(this.selectedOven);

@@ -7,6 +7,7 @@ export class Oven {
     public ovenID: string = '',
     public address: string = '',
     public measurements: Array<Measurement> = [],
-    public location: Location
+    public locationLatitude = 0.0,
+    public locationLongitude = 0.0
   ) {}
 }

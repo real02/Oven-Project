@@ -9,6 +9,7 @@ import { OvenInfoComponent } from './components/OvenInfo';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { EditableInfoComponent } from './components/EditableInfo';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     MapComponent,
     MeasurementsComponent,
     OvenInfoComponent,
+    EditableInfoComponent,
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule],
   providers: [],

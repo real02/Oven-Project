@@ -23,10 +23,7 @@ export class AppComponent implements OnInit {
     this.ovenService.getOvens().subscribe({
       next: (ovens) => {
         this.ovens = ovens;
-        this.selectedOven =
-          this.ovens.length > 0
-            ? this.ovens[0]
-            : new Oven('', '', [], new Location());
+        this.selectedOven = this.ovens.length > 0 ? this.ovens[0] : new Oven();
         console.log(this.ovens);
       },
       error: (err) => (this.errorMessage = err),
