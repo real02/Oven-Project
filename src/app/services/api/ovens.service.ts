@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -11,13 +15,21 @@ import { Oven } from 'src/app/data/Oven/oven';
   providedIn: 'root',
 })
 export class OvenService {
-  private ovensUrl = 'http://localhost:51044/api/ovens';
+  private url = 'http://localhost:51044/api/ovens/';
 
   constructor(private http: HttpClient) {}
 
   public getOvens(): Observable<Oven[]> {
     return this.http
-      .get<Oven[]>(this.ovensUrl)
+      .get<Oven[]>(this.url)
+      .pipe(tap(), catchError(this.handleError));
+  }
+
+  public updateOven(oven: Oven): Observable<Oven> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.http
+      .put<Oven>(this.url + oven.ovenId, oven, { headers })
       .pipe(tap(), catchError(this.handleError));
   }
 

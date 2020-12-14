@@ -8,8 +8,10 @@ import { MeasurementsComponent } from './components/Measurement';
 import { OvenInfoComponent } from './components/OvenInfo';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditableInfoComponent } from './components/EditableInfo';
+import { AddNewOvenComponent } from './components/AddNewOvenForm';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,15 @@ import { EditableInfoComponent } from './components/EditableInfo';
     MeasurementsComponent,
     OvenInfoComponent,
     EditableInfoComponent,
+    AddNewOvenComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    MDBBootstrapModule.forRoot(),
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

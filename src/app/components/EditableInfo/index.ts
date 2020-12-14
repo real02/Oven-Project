@@ -1,5 +1,7 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { Oven } from 'src/app/data/Oven/oven';
+import { OvenService } from 'src/app/services/api/ovens.service';
 
 @Component({
   selector: 'ngz-editable',
@@ -7,6 +9,8 @@ import { Oven } from 'src/app/data/Oven/oven';
   styleUrls: ['./index.scss'],
 })
 export class EditableInfoComponent {
+  public constructor(private ovenService: OvenService) {}
+
   @Input()
   public selectedOven: Oven;
 
@@ -35,6 +39,8 @@ export class EditableInfoComponent {
     for (const property in this.propertyValues) {
       this.selectedOven[property] = this.propertyValues[property];
     }
+
+    this.ovenService.updateOven(this.selectedOven).subscribe();
   }
 
   public hasEmptyProperty(): boolean {
