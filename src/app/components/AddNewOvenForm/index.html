@@ -36,7 +36,7 @@
           </button>
         </div>
         <div class="modal-body mx-3">
-          <div class="md-form mb-4">
+          <div class="md-form mb-4" [ngClass]="{'error' : !validateAddress()}">
             <input
               type="text"
               id="defaultForm-address"
@@ -46,6 +46,14 @@
               mdbValidate
             />
             <label for="defaultForm-address">Address</label>
+            <em
+              *ngIf="!validateAddress() && validatingForm.controls.address.errors.required"
+              >Required</em
+            >
+            <em
+              *ngIf="!validateAddress() && validatingForm.controls.address.errors.pattern"
+              >Address must start with a letter</em
+            >
             <!-- <mdb-error
               *ngIf="address.invalid && (address.dirty || address.touched)"
             >
@@ -58,7 +66,10 @@
             </mdb-success> -->
           </div>
 
-          <div class="md-form mb-4">
+          <div
+            class="md-form mb-4"
+            [ngClass]="{'error' : !validateLocationLatitude()}"
+          >
             <input
               type="text"
               id="defaultForm-locationLatitude"
@@ -68,6 +79,14 @@
               mdbValidate
             />
             <label for="defaultForm-locationLatitude">Location latitude</label>
+            <em
+              *ngIf="!validateLocationLatitude() && validatingForm.controls.locationLatitude.errors.required"
+              >Required</em
+            >
+            <em
+              *ngIf="!validateLocationLatitude() && validatingForm.controls.locationLatitude.errors.pattern"
+              >Invalid latitude format</em
+            >
             <!-- <mdb-error
               *ngIf="locationLatitude.invalid && (locationLatitude.dirty || locationLatitude.touched)"
             >
@@ -80,7 +99,10 @@
             </mdb-success> -->
           </div>
 
-          <div class="md-form mb-4">
+          <div
+            class="md-form mb-4"
+            [ngClass]="{'error' : !validateLocationLongitude()}"
+          >
             <input
               type="text"
               id="defaultForm-locationLongitude"
@@ -91,6 +113,14 @@
             />
             <label for="defaultForm-locationLongitude"
               >Location longitude</label
+            >
+            <em
+              *ngIf="!validateLocationLongitude() && validatingForm.controls.locationLongitude.errors.required"
+              >Required</em
+            >
+            <em
+              *ngIf="!validateLocationLongitude() && validatingForm.controls.locationLongitude.errors.pattern"
+              >Invalid longitude format</em
             >
             <!-- <mdb-error
               *ngIf="locationLongitude.invalid && (locationLongitude.dirty || locationLongitude.touched)"
@@ -105,7 +135,13 @@
           </div>
         </div>
         <div class="modal-footer d-flex justify-content-center">
-          <button mdbBtn color="default" class="waves-light" mdbWavesEffect>
+          <button
+            mdbBtn
+            color="default"
+            class="waves-light"
+            mdbWavesEffect
+            (click)="addNewOven()"
+          >
             ADD
           </button>
         </div>
