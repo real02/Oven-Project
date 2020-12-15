@@ -21,8 +21,14 @@ export class AddNewOvenComponent implements OnInit {
 
   public errorMessage: string;
 
+  public ovenAdded = false;
+
   ngOnInit(): void {
     this.initEmptyForm();
+  }
+
+  public toggleStatus(): void {
+    this.ovenAdded = !this.ovenAdded;
   }
 
   public addNewOven(): void {
@@ -44,6 +50,7 @@ export class AddNewOvenComponent implements OnInit {
           );
           this.ovens.push(oven);
           this.newOvenAdded.emit(this.ovens);
+          this.toggleStatus();
         },
         error: (err) => (this.errorMessage = err),
       });

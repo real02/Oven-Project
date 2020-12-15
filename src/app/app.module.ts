@@ -12,7 +12,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditableInfoComponent } from './components/EditableInfo';
 import { AddNewOvenComponent } from './components/AddNewOvenForm';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { MessageModalComponent } from './components/MessageModal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  AddedOvenMessageComponent,
+  SuccessfulAddedOvenDialog,
+} from './components/MessageModal/SuccessfullyAddedOven';
+import {
+  SuccessfullyUpdatedOvenDialog,
+  UpdatedOvenMessageComponent,
+} from './components/MessageModal/SuccessfullyUpdatedOven';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,7 +32,10 @@ import { MessageModalComponent } from './components/MessageModal';
     OvenInfoComponent,
     EditableInfoComponent,
     AddNewOvenComponent,
-    MessageModalComponent,
+    AddedOvenMessageComponent,
+    UpdatedOvenMessageComponent,
+    SuccessfulAddedOvenDialog,
+    SuccessfullyUpdatedOvenDialog,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +43,8 @@ import { MessageModalComponent } from './components/MessageModal';
     FormsModule,
     MDBBootstrapModule.forRoot(),
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

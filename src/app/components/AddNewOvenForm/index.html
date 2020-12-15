@@ -11,7 +11,6 @@
   >
     NEW OVEN
   </button>
-  <ngz-message-modal></ngz-message-modal>
   <div
     mdbModal
     #frame="mdbModal"
@@ -112,10 +111,13 @@
               color="default"
               class="waves-light"
               mdbWavesEffect
-              (click)="addNewOven()"
+              (click)="addNewOven(); frame.hide(); initEmptyForm()"
             >
               ADD
             </button>
+          </ng-container>
+          <ng-container *ngIf="ovenAdded">
+            <ngz-message-addedOven></ngz-message-addedOven>
           </ng-container>
           <ng-container *ngIf="!validatingForm.valid">
             <button
