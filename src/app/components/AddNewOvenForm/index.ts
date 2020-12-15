@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Oven } from 'src/app/data/Oven/oven';
 import { OvenDto } from 'src/app/data/OvenDto/ovenDto';
@@ -12,7 +12,14 @@ import { OvenService } from 'src/app/services/api/ovens.service';
 export class AddNewOvenComponent implements OnInit {
   public constructor(private ovenService: OvenService) {}
 
+  @Input()
+  ovens: Array<Oven>;
+  @Output()
+  private newOvenAdded = new EventEmitter<Oven[]>();
+
   validatingForm: FormGroup;
+
+  public errorMessage: string;
 
   ngOnInit(): void {
     this.initEmptyForm();
@@ -26,7 +33,20 @@ export class AddNewOvenComponent implements OnInit {
         this.validatingForm.value.locationLongitude
       );
 
-      this.ovenService.addNewOven(ovenDto).subscribe();
+      this.ovenService.addNewOven(ovenDto).subscribe({
+        next: (newOven) => {
+          let oven = new Oven(
+            newOven.ovenId,
+            newOven.address,
+            newOven.measurements,
+            newOven.locationLatitude,
+            newOven.locationLongitude
+          );
+          this.ovens.push(oven);
+          this.newOvenAdded.emit(this.ovens);
+        },
+        error: (err) => (this.errorMessage = err),
+      });
     }
   }
 

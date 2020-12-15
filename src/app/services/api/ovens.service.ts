@@ -34,9 +34,9 @@ export class OvenService {
       .pipe(tap(), catchError(this.handleError));
   }
 
-  public addNewOven(oven: OvenDto): Observable<OvenDto> {
+  public addNewOven(oven: OvenDto): Observable<Oven> {
     return this.http
-      .post<OvenDto>(this.url, oven)
+      .post<Oven>(this.url, oven)
       .pipe(tap(), catchError(this.handleError));
   }
 
