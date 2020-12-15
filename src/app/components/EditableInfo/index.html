@@ -1,51 +1,125 @@
 <div>
-  <ng-container *ngIf="showInput">
-    <button (click)="toggleShowInput()" disabled>Edit</button>
-  </ng-container>
-  <ng-container *ngIf="!showInput">
+  <div>
     <button (click)="toggleShowInput()">Edit</button>
-  </ng-container>
+  </div>
   <ng-container *ngIf="showInput">
-    <div>
-      <label for="address">Address: </label>
+    <!-- <div class="editableParts">
+      <div>
+        <label for="address">Address: </label>
+        <input
+          type="text"
+          id="address"
+          value="{{selectedOven.address}}"
+          #address
+          (blur)="addValue(address.value, 'address')"
+        /><br />
+      </div>
+      <div>
+        <label for="locationLatitude">Location latitude: </label>
+        <input
+          type="text"
+          id="latitude"
+          value="{{selectedOven.locationLatitude}}"
+          #locationLatitude
+          (blur)="addValue(locationLatitude.value, 'locationLatitude')"
+        /><br />
+      </div>
+      <div>
+        <label for="locationLongitude">Location longitude: </label>
+        <input
+          type="text"
+          id="longitude"
+          value="{{selectedOven.locationLongitude}}"
+          #locationLongitude
+          (blur)="addValue(locationLongitude.value, 'locationLongitude')"
+        /><br />
+      </div>
+    </div> -->
+    <div class="md-form mb-4" [ngClass]="{'error' : !validateAddress()}">
       <input
         type="text"
-        id="address"
-        #address
-        (blur)="addValue(address.value, 'address')"
-      /><br />
+        id="defaultForm-address"
+        [formControl]="address"
+        class="form-control"
+        mdbInput
+        mdbValidate
+      />
+      <label for="defaultForm-address">Address</label>
+      <em
+        *ngIf="!validateAddress() && validatingForm.controls.address.errors.required"
+        >Required</em
+      >
+      <em
+        *ngIf="!validateAddress() && validatingForm.controls.address.errors.pattern"
+        >Address must start with a letter</em
+      >
     </div>
-    <div>
-      <label for="locationLatitude">Location latitude: </label>
+
+    <div
+      class="md-form mb-4"
+      [ngClass]="{'error' : !validateLocationLatitude()}"
+    >
       <input
         type="text"
-        id="latitude"
-        #locationLatitude
-        (blur)="addValue(locationLatitude.value, 'locationLatitude')"
-      /><br />
+        id="defaultForm-locationLatitude"
+        [formControl]="locationLatitude"
+        class="form-control"
+        mdbInput
+        mdbValidate
+      />
+      <label for="defaultForm-locationLatitude">Location latitude</label>
+      <em
+        *ngIf="!validateLocationLatitude() && validatingForm.controls.locationLatitude.errors.required"
+        >Required</em
+      >
+      <em
+        *ngIf="!validateLocationLatitude() && validatingForm.controls.locationLatitude.errors.pattern"
+        >Invalid latitude format</em
+      >
     </div>
-    <div>
-      <label for="locationLongitude">Location longitude: </label>
+
+    <div
+      class="md-form mb-4"
+      [ngClass]="{'error' : !validateLocationLongitude()}"
+    >
       <input
         type="text"
-        id="longitude"
-        #locationLongitude
-        (blur)="addValue(locationLongitude.value, 'locationLongitude')"
-      /><br />
+        id="defaultForm-locationLongitude"
+        [formControl]="locationLongitude"
+        class="form-control"
+        mdbInput
+        mdbValidate
+      />
+      <label for="defaultForm-locationLongitude">Location longitude</label>
+      <em
+        *ngIf="!validateLocationLongitude() && validatingForm.controls.locationLongitude.errors.required"
+        >Required</em
+      >
+      <em
+        *ngIf="!validateLocationLongitude() && validatingForm.controls.locationLongitude.errors.pattern"
+        >Invalid longitude format</em
+      >
     </div>
   </ng-container>
   <ng-container *ngIf="!showInput">
-    <div>Address: {{selectedOven.address}}</div>
-    <div>Location latitude: {{selectedOven.locationLatitude}}</div>
-    <div>Location longitude: {{selectedOven.locationLongitude}}</div>
+    <div>
+      <label for="address">Address: {{selectedOven.address}}</label>
+    </div>
+    <div>
+      <label for="locationLatitude"
+        >Location latitude: {{selectedOven.locationLatitude}}</label
+      >
+    </div>
+    <div>
+      <label for="locationLongitude"
+        >Location longitude: {{selectedOven.locationLongitude}}</label
+      >
+    </div>
   </ng-container>
   <div>
-    <ng-container *ngIf="!showInput">
-      <button class="btnSave" (click)="updateOvenData()" disabled>Save</button>
-    </ng-container>
     <ng-container *ngIf="showInput">
       <button class="btnSave" (click)="updateOvenData()">Save</button>
+      <button (click)="cancelChanges()">Cancel</button>
     </ng-container>
-    <button (click)="cancelChanges()">Cancel</button>
   </div>
 </div>

@@ -15,24 +15,7 @@ export class AddNewOvenComponent implements OnInit {
   validatingForm: FormGroup;
 
   ngOnInit(): void {
-    this.validatingForm = new FormGroup({
-      address: new FormControl('', [
-        Validators.required,
-        Validators.pattern('[a-zA-Z].*'),
-      ]),
-      locationLatitude: new FormControl('', [
-        Validators.required,
-        Validators.pattern(
-          '([0-9].[0-9]{0,9}|-[0-9].[0-9]{0,9}|[0-8][0-9].[0-9]{0,8}|-[0-8][0-9].[0-9]{0,7}|-90|90)'
-        ),
-      ]),
-      locationLongitude: new FormControl('', [
-        Validators.required,
-        Validators.pattern(
-          '^(0.[0-9]{0,7}|[0-9]{1,2}.[0-8]{0,7}|1[0-7][0-9].[0-9]{0,7}|180)'
-        ),
-      ]),
-    });
+    this.initEmptyForm();
   }
 
   public addNewOven(): void {
@@ -45,6 +28,27 @@ export class AddNewOvenComponent implements OnInit {
 
       this.ovenService.addNewOven(ovenDto).subscribe();
     }
+  }
+
+  public initEmptyForm(): void {
+    this.validatingForm = new FormGroup({
+      address: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[a-zA-Z].*'),
+      ]),
+      locationLatitude: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          '([0-9][.][0-9]{1,14}|-[0-9][.]][0-9]{1,14}|[0-8][0-9][.][0-9]{1,14}|-[0-8][0-9][.][0-9]{1,14})'
+        ),
+      ]),
+      locationLongitude: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          '(0[.][0-9]{1-14}|[0-9]{1,2}[.][0-9]{1,14}|1[0-7][0-9][.][0-9]{1,14})'
+        ),
+      ]),
+    });
   }
 
   public validateAddress(): boolean {

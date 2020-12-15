@@ -11,6 +11,7 @@
   >
     NEW OVEN
   </button>
+  <ngz-message-modal></ngz-message-modal>
   <div
     mdbModal
     #frame="mdbModal"
@@ -30,7 +31,7 @@
             class="close"
             data-dismiss="modal"
             aria-label="Close"
-            (click)="frame.hide()"
+            (click)="frame.hide(); initEmptyForm();"
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -54,16 +55,6 @@
               *ngIf="!validateAddress() && validatingForm.controls.address.errors.pattern"
               >Address must start with a letter</em
             >
-            <!-- <mdb-error
-              *ngIf="address.invalid && (address.dirty || address.touched)"
-            >
-              Input invalid
-            </mdb-error>
-            <mdb-success
-              *ngIf="address.valid && (address.dirty || address.touched)"
-            >
-              Input valid
-            </mdb-success> -->
           </div>
 
           <div
@@ -87,16 +78,6 @@
               *ngIf="!validateLocationLatitude() && validatingForm.controls.locationLatitude.errors.pattern"
               >Invalid latitude format</em
             >
-            <!-- <mdb-error
-              *ngIf="locationLatitude.invalid && (locationLatitude.dirty || locationLatitude.touched)"
-            >
-              Input invalid
-            </mdb-error>
-            <mdb-success
-              *ngIf="locationLatitude.valid && (locationLatitude.dirty || locationLatitude.touched)"
-            >
-              Input valid
-            </mdb-success> -->
           </div>
 
           <div
@@ -122,28 +103,31 @@
               *ngIf="!validateLocationLongitude() && validatingForm.controls.locationLongitude.errors.pattern"
               >Invalid longitude format</em
             >
-            <!-- <mdb-error
-              *ngIf="locationLongitude.invalid && (locationLongitude.dirty || locationLongitude.touched)"
-            >
-              Input invalid
-            </mdb-error>
-            <mdb-success
-              *ngIf="locationLongitude.valid && (locationLongitude.dirty || locationLongitude.touched)"
-            >
-              Input valid
-            </mdb-success> -->
           </div>
         </div>
         <div class="modal-footer d-flex justify-content-center">
-          <button
-            mdbBtn
-            color="default"
-            class="waves-light"
-            mdbWavesEffect
-            (click)="addNewOven()"
-          >
-            ADD
-          </button>
+          <ng-container *ngIf="validatingForm.valid">
+            <button
+              mdbBtn
+              color="default"
+              class="waves-light"
+              mdbWavesEffect
+              (click)="addNewOven()"
+            >
+              ADD
+            </button>
+          </ng-container>
+          <ng-container *ngIf="!validatingForm.valid">
+            <button
+              mdbBtn
+              color="default"
+              class="waves-light not-allowed"
+              mdbWavesEffect
+              disabled
+            >
+              ADD
+            </button>
+          </ng-container>
         </div>
       </div>
     </div>

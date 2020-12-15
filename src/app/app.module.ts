@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditableInfoComponent } from './components/EditableInfo';
 import { AddNewOvenComponent } from './components/AddNewOvenForm';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MessageModalComponent } from './components/MessageModal';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     OvenInfoComponent,
     EditableInfoComponent,
     AddNewOvenComponent,
+    MessageModalComponent,
   ],
   imports: [
     BrowserModule,
