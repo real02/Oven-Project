@@ -41,14 +41,7 @@ export class AddNewOvenComponent implements OnInit {
 
       this.ovenService.addNewOven(ovenDto).subscribe({
         next: (newOven) => {
-          let oven = new Oven(
-            newOven.ovenId,
-            newOven.address,
-            newOven.measurements,
-            newOven.locationLatitude,
-            newOven.locationLongitude
-          );
-          this.ovens.push(oven);
+          this.ovens.push(newOven);
           this.newOvenAdded.emit(this.ovens);
           this.toggleStatus();
         },

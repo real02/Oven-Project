@@ -26,11 +26,11 @@ export class OvenService {
       .pipe(tap(), catchError(this.handleError));
   }
 
-  public updateOven(oven: Oven): Observable<Oven> {
+  public updateOven(ovenDto: OvenDto, ovenId: string): Observable<OvenDto> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this.http
-      .put<Oven>(this.url + oven.ovenId, oven, { headers })
+      .put<OvenDto>(this.url + ovenId, ovenDto, { headers })
       .pipe(tap(), catchError(this.handleError));
   }
 

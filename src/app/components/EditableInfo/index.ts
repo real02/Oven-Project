@@ -2,6 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Oven } from 'src/app/data/Oven/oven';
+import { OvenDto } from 'src/app/data/OvenDto/ovenDto';
 import { OvenService } from 'src/app/services/api/ovens.service';
 
 @Component({
@@ -16,6 +17,8 @@ export class EditableInfoComponent {
 
   @Input()
   public selectedOven: Oven;
+
+  public ovenUpdated: boolean;
 
   public propertyValues: { [key: string]: string } = {};
   public showInput = false;
@@ -50,6 +53,9 @@ export class EditableInfoComponent {
     if (this.showInput) {
       this.initEmptyForm();
     }
+    if (this.ovenUpdated) {
+      this.ovenUpdated = false;
+    }
   }
 
   public cancelChanges(): void {
@@ -58,16 +64,19 @@ export class EditableInfoComponent {
   }
 
   public updateOvenData(): void {
-    if (this.hasEmptyProperty()) {
-      return;
-    }
-
     // tslint:disable-next-line: forin
     for (const property in this.propertyValues) {
       this.selectedOven[property] = this.propertyValues[property];
     }
 
-    this.ovenService.updateOven(this.selectedOven).subscribe();
+    let ovenDto = new OvenDto(
+      this.selectedOven.address,
+      this.selectedOven.locationLatitude,
+      this.selectedOven.locationLongitude
+    );
+
+    this.ovenService.updateOven(ovenDto, this.selectedOven.ovenId).subscribe();
+    this.ovenUpdated = true;
   }
 
   public hasEmptyProperty(): boolean {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -9,12 +9,24 @@ import { MatDialog } from '@angular/material/dialog';
 export class UpdatedOvenMessageComponent {
   constructor(public dialog: MatDialog) {}
 
-  openDialog() {
-    const dialogRef = this.dialog.open(SuccessfullyUpdatedOvenDialog);
+  @Input()
+  ovenUpdated: boolean;
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
+  @Input()
+  showInput: boolean;
+
+  ngOnInit(): void {
+    this.openDialog();
+  }
+
+  openDialog() {
+    this.dialog.open(SuccessfullyUpdatedOvenDialog, {
+      height: '200px',
+      width: '400px',
     });
+
+    this.ovenUpdated = !this.ovenUpdated;
+    this.showInput = false;
   }
 }
 

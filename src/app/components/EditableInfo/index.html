@@ -43,6 +43,7 @@
         class="form-control"
         mdbInput
         mdbValidate
+        (blur)="addValue(address.value, 'address')"
       />
       <label for="defaultForm-address">Address</label>
       <em
@@ -66,6 +67,7 @@
         class="form-control"
         mdbInput
         mdbValidate
+        (blur)="addValue(locationLatitude.value, 'locationLatitude')"
       />
       <label for="defaultForm-locationLatitude">Location latitude</label>
       <em
@@ -89,6 +91,7 @@
         class="form-control"
         mdbInput
         mdbValidate
+        (blur)="addValue(locationLongitude.value, 'locationLongitude')"
       />
       <label for="defaultForm-locationLongitude">Location longitude</label>
       <em
@@ -118,8 +121,16 @@
   </ng-container>
   <div>
     <ng-container *ngIf="showInput">
-      <button class="btnSave" (click)="updateOvenData()">Save</button>
+      <ng-container *ngIf="validatingForm.valid">
+        <button class="btnSave" (click)="updateOvenData()">Save</button>
+      </ng-container>
+      <ng-container *ngIf="!validatingForm.valid">
+        <button class="btnSave" disabled>Save</button>
+      </ng-container>
       <button (click)="cancelChanges()">Cancel</button>
     </ng-container>
   </div>
+  <ng-container *ngIf="ovenUpdated">
+    <ngz-message-updatedOven [showInput]="showInput"></ngz-message-updatedOven>
+  </ng-container>
 </div>
