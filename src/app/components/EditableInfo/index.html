@@ -122,12 +122,17 @@
   <div>
     <ng-container *ngIf="showInput">
       <ng-container *ngIf="validatingForm.valid">
-        <button class="btnSave" (click)="updateOvenData()">Save</button>
+        <button
+          class="btnSave"
+          (click)="updateOvenData(); cancelInputChanges()"
+        >
+          Save
+        </button>
       </ng-container>
       <ng-container *ngIf="!validatingForm.valid">
         <button class="btnSave" disabled>Save</button>
       </ng-container>
-      <button (click)="cancelChanges()">Cancel</button>
+      <button (click)="cancelInputChanges()">Cancel</button>
     </ng-container>
   </div>
   <ng-container *ngIf="ovenUpdated">

@@ -58,7 +58,7 @@ export class EditableInfoComponent {
     }
   }
 
-  public cancelChanges(): void {
+  public cancelInputChanges(): void {
     this.propertyValues = {};
     this.showInput = false;
   }
