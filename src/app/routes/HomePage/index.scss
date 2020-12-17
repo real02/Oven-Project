@@ -1,0 +1,29 @@
+html,
+body {
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.leftColumnSection {
+  flex-direction: column;
+  height: 100%;
+  width: 35%;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.rightColumnSection {
+  flex-direction: column;
+  height: 100%;
+  width: 40%;
+  margin-top: 10px;
+  margin-right: 5px;
+}

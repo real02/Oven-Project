@@ -23,6 +23,10 @@ import {
 } from './components/MessageModal/SuccessfullyUpdatedOven';
 import { MatDialogModule } from '@angular/material/dialog';
 
+import { appRoutes } from './routes/routes';
+import { RouterModule } from '@angular/router';
+import { HomePageComponent } from './routes/HomePage';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +40,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     UpdatedOvenMessageComponent,
     SuccessfulAddedOvenDialog,
     SuccessfullyUpdatedOvenDialog,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    RouterModule.forRoot(appRoutes),
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })

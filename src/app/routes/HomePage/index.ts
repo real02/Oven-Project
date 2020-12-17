@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Oven } from './data/Oven/oven';
+import { Oven } from '../../data/Oven/oven';
 
-import { OvenService } from './services/api/ovens.service';
+import { OvenService } from '../../services/api/ovens.service';
 
 @Component({
-  selector: 'ngz-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'ngz-home-page',
+  templateUrl: './index.html',
+  styleUrls: ['./index.scss'],
 })
-export class AppComponent implements OnInit {
+export class HomePageComponent implements OnInit {
   ovens: Array<Oven> = [];
 
   selectedOven: Oven;
 
   public errorMessage: string;
 
-  public constructor(private ovenService: OvenService) {}
+  public constructor(
+    private ovenService: OvenService,
+  ) {}
 
   ngOnInit(): void {
     // TODO: ako je ruta /main onda ovo ispod:

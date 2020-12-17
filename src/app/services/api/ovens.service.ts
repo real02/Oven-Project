@@ -40,6 +40,12 @@ export class OvenService {
       .pipe(tap(), catchError(this.handleError));
   }
 
+  public getOven(ovenId: number): Observable<Oven> {
+    return this.http
+      .get<Oven>(this.url + ovenId)
+      .pipe(tap(), catchError(this.handleError));
+  }
+
   private handleError(err: HttpErrorResponse): Observable<never> {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
