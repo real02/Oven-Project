@@ -7,7 +7,7 @@ import { PageNotFoundComponent } from './PageNotFound';
 export const appRoutes: Routes = [
   { path: 'main/about-us', component: AboutUsComponent },
   { path: 'main', component: HomePageComponent, pathMatch: 'full' },
-  { path: 'main/:ovenId', component: AppComponent },
+  { path: 'main/:ovenId', component: HomePageComponent },
   { path: '', redirectTo: 'main', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];

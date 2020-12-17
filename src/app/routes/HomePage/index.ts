@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Oven } from '../../data/Oven/oven';
@@ -19,10 +19,10 @@ export class HomePageComponent implements OnInit {
 
   public constructor(
     private ovenService: OvenService,
+    private router: Router
   ) {}
 
-  ngOnInit(): void {
-    // TODO: ako je ruta /main onda ovo ispod:
+  public loadData(): void {
     this.ovenService.getOvens().subscribe({
       next: (ovens) => {
         this.ovens = ovens;
@@ -31,7 +31,35 @@ export class HomePageComponent implements OnInit {
       },
       error: (err) => (this.errorMessage = err),
     });
-    // TODO: ako je ruta /main:ovenId onda stavi za selectedOven, oven s id-em iz rute
-    // TODO: dohvati oven naredbom getOven(ovenId: number) iz oven service-a, ako postoji onda selektiraj taj, a ako ne postoji onda redirectaj na /main
+  }
+
+  public navigateToPageNotFound(): void {
+    this.router.navigate(['**']);
+  }
+
+  ngOnInit(): void {
+    const url = this.router.url;
+
+    if (url.match('/main/d?')) {
+      this.loadData();
+
+      let tmp = url.split('main/');
+      const ovenId = tmp[1];
+
+      //ako ne postoji oven sa upisanima id-em, ispiši poruku
+      if (this.ovens.find((o) => o.ovenId == ovenId) === undefined) {
+        this.navigateToPageNotFound();
+        return;
+      }
+
+      this.ovenService.getOven(parseInt(ovenId)).subscribe({
+        next: (oven) => {
+          this.selectedOven = oven;
+        },
+        error: (err) => (this.errorMessage = err),
+      });
+    } else if (url.match('/main')) {
+      this.loadData();
+    }
   }
 }
