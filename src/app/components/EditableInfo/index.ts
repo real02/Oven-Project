@@ -1,5 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Oven } from 'src/app/data/Oven/oven';
 import { OvenDto } from 'src/app/data/OvenDto/ovenDto';
@@ -17,6 +17,12 @@ export class EditableInfoComponent {
 
   @Input()
   public selectedOven: Oven;
+
+  @Output() showInputEvent = new EventEmitter<boolean>();
+
+  showInputStatus(value: boolean) {
+    this.showInputEvent.emit(value);
+  }
 
   public ovenUpdated: boolean;
 

@@ -1,6 +1,8 @@
 <div>
   <div>
-    <button (click)="toggleShowInput()">Edit</button>
+    <button (click)="toggleShowInput(); showInputStatus(showInput)">
+      Edit
+    </button>
   </div>
   <ng-container *ngIf="showInput">
     <!-- <div class="editableParts">
@@ -124,7 +126,7 @@
       <ng-container *ngIf="validatingForm.valid">
         <button
           class="btnSave"
-          (click)="updateOvenData(); cancelInputChanges()"
+          (click)="updateOvenData(); cancelInputChanges(); showInputStatus(showInput)"
         >
           Save
         </button>
@@ -132,7 +134,9 @@
       <ng-container *ngIf="!validatingForm.valid">
         <button class="btnSave" disabled>Save</button>
       </ng-container>
-      <button (click)="cancelInputChanges()">Cancel</button>
+      <button (click)="cancelInputChanges(); showInputStatus(showInput)">
+        Cancel
+      </button>
     </ng-container>
   </div>
   <ng-container *ngIf="ovenUpdated">
