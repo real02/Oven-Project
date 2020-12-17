@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Oven } from 'src/app/data/Oven/oven';
 

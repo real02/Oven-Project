@@ -41,20 +41,33 @@ export class HomePageComponent implements OnInit {
     const url = this.router.url;
 
     if (url.match('/main/d?')) {
-      this.loadData();
-
       let tmp = url.split('main/');
       const ovenId = tmp[1];
 
-      //ako ne postoji oven sa upisanima id-em, ispiši poruku
-      if (this.ovens.find((o) => o.ovenId == ovenId) === undefined) {
-        this.navigateToPageNotFound();
-        return;
-      }
+      this.ovenService.getOvens().subscribe({
+        next: (ovens) => {
+          this.ovens = ovens;
+          this.selectedOven =
+            this.ovens.length > 0 ? this.ovens[0] : new Oven();
+          console.log(this.ovens);
+          //ako ne postoji oven sa upisanima id-em, ispiši poruku
+          console.log(this.ovens.find((oven) => oven['ovenId'] == ovenId));
+          console.log(ovenId);
 
-      this.ovenService.getOven(parseInt(ovenId)).subscribe({
-        next: (oven) => {
-          this.selectedOven = oven;
+          let possibleOven = this.ovens.find(
+            (oven) => oven['ovenId'] == ovenId
+          );
+          if (possibleOven !== undefined) {
+            this.ovenService.getOven(parseInt(ovenId)).subscribe({
+              next: (oven) => {
+                this.selectedOven = oven;
+              },
+              error: (err) => (this.errorMessage = err),
+            });
+          } else {
+            this.navigateToPageNotFound();
+            return;
+          }
         },
         error: (err) => (this.errorMessage = err),
       });
