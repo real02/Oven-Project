@@ -1,6 +1,6 @@
 <div class="form-group">
   <label for="ovens">Select an oven:</label>
-  <ng-container *ngIf="!selectEnabled">
+  <ng-container *ngIf="!showInput">
     <select
       class="form-control"
       id="ovens"
@@ -9,9 +9,12 @@
       <option *ngFor="let oven of ovens" value="{{oven.ovenId}}">
         Oven, Address: {{oven.address}}
       </option>
+      <ng-container *ngIf="selectedOven">
+        {{setDropDownListValue()}}
+      </ng-container>
     </select>
   </ng-container>
-  <ng-container *ngIf="selectEnabled">
+  <ng-container *ngIf="showInput">
     <select
       class="form-control"
       (change)="setSelectedOven($event.target.value)"

@@ -1,4 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 import { Oven } from 'src/app/data/Oven/oven';
 
@@ -18,7 +23,7 @@ export class OvenInfoComponent {
 
   public ovenSelected = false;
 
-  public selectEnabled: boolean;
+  public showInput: boolean;
 
   public setSelectedOven(ovenID: number): void {
     console.log(ovenID);
@@ -29,6 +34,11 @@ export class OvenInfoComponent {
   }
 
   public setEditMode(showInput: boolean) {
-    this.selectEnabled = showInput;
+    this.showInput = showInput;
+  }
+
+  public setDropDownListValue(): void {
+    let dropdownList = document.getElementById('ovens') as HTMLSelectElement;
+    dropdownList.selectedIndex = parseInt(this.selectedOven.ovenId) - 1;
   }
 }
