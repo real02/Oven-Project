@@ -49,9 +49,8 @@ export class HomePageComponent implements OnInit {
           this.ovens = ovens;
           this.selectedOven =
             this.ovens.length > 0 ? this.ovens[0] : new Oven();
-          console.log(this.ovens);
           //ako ne postoji oven sa upisanima id-em, ispiši poruku
-          console.log(this.ovens.find((oven) => oven['ovenId'] == ovenId));
+          console.log(this.ovens.find((oven) => oven.ovenId == ovenId));
           console.log(ovenId);
 
           let possibleOven = this.ovens.find(
